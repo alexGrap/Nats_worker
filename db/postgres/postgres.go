@@ -10,12 +10,6 @@ import (
 	"log"
 )
 
-//type ConnectDb struct {
-//	Database *sqlx.DB
-//}
-//
-//var Connection ConnectDb
-
 type PsqlRepo struct {
 	pool *pgxpool.Pool
 }
