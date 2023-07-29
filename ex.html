@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WB L0</title>
+</head>
+<body>
+<h1>Get Page</h1>
+
+<label for="inputField">Enter ID:</label>
+<input type="text" id="inputField" placeholder="Id">
+
+<button onclick="getById()">Get by ID</button>
+<button onclick="getAll()">Get all</button>
+
+<div id="result"></div>
+<pre id="output"></pre>
+
+<script>
+    function getById() {
+        const inputField = document.getElementById("inputField").value;
+        const url = `http://localhost:8080/getById?id=${inputField}`;
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                displayResult(data, "result");
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+    }
+
+    function getAll() {
+        const url = "http://localhost:8080/getAll";
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                displayResult(data, "result");
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+    }
+
+    function displayResult(data) {
+        const outputDiv = document.getElementById("output");
+        outputDiv.textContent = JSON.stringify(data, null, 2);
+    }
+</script>
+</body>
+</html>
