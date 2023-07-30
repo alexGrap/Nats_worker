@@ -55,5 +55,5 @@ func (n *Nats) Handler(msg *stan.Msg) {
 		log.Println(err)
 		return
 	}
-	log.Println("Broker got new model")
+	log.Println("Nats got message")
 }
